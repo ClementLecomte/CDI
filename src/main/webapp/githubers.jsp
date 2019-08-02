@@ -30,7 +30,7 @@
                     <tr>
                         <td>${githuber.name} </td>
                         <td>${githuber.email}</td>
-                        <td>${githuber.avatarUrl}</td>
+                        <td><img src=${githuber.avatarUrl} style="width: 200px; height:200px;"></td>
                         <td>${githuber.login}</td>
                     </tr>
                 </c:forEach>

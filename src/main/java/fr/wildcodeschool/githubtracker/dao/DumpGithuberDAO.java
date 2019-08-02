@@ -1,5 +1,8 @@
 package fr.wildcodeschool.githubtracker.dao;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.wildcodeschool.githubtracker.model.Githuber;
 
 import javax.enterprise.context.Dependent;
@@ -7,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Dependent
+
+
 public class DumpGithuberDAO implements GithuberDao {
 
     public List<Githuber> getGithubers() {
@@ -22,7 +27,9 @@ public class DumpGithuberDAO implements GithuberDao {
         return githuberList;
     }
 
+    @Override
 
-
-
+    public void saveGithuber(Githuber githuber) throws UnsupportedOperationException  {
+        throw new UnsupportedOperationException();
+    }
 }

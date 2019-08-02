@@ -7,4 +7,7 @@ import java.util.List;
 public interface GithuberDao {
 
     List<Githuber> getGithubers();
+
+    void saveGithuber(Githuber githuber);
+
 }

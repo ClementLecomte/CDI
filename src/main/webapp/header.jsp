@@ -31,6 +31,9 @@
                 <a class="nav-link" href= "githubers" />Mes Githubers</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href= "log" /> Ajouter un Githubers</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#"></a>
             </li>
         </ul>
