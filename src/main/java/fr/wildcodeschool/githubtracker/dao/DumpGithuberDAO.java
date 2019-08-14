@@ -18,11 +18,8 @@ public class DumpGithuberDAO implements GithuberDao {
 
         List<Githuber> githuberList = new ArrayList<Githuber>();
 
-        githuberList.add(new Githuber("Toto", "Toto"," Toto@toto.com", "JHIZh/dfdf"));
-        githuberList.add(new Githuber("Jean ", "Admin"," Jm@blabla.com", "JHIZh/jhzufgeu"));
-        githuberList.add(new Githuber("Aline", "JDIS"," Aline93@ble@fr", "JHIZh/jfheuf"));
-        githuberList.add(new Githuber("Cécile", "MDOMQ"," Cilce@bla@fr", "JHIZh/defez"));
-        githuberList.add(new Githuber("Clément", "Naash "," Bla@bla.com", "hh/jk"));
+
+        githuberList.add(new Githuber("Toto", "Toto"," Toto@toto.com", "JHIZh/dfdf", 545454, "jhuhuh", "k,jkj" , "ijhih"));
 
         return githuberList;
     }

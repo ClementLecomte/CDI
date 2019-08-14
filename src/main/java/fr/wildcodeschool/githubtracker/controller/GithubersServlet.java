@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -30,11 +31,23 @@ public class GithubersServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String value = request.getParameter("untrack");
 
+        try {
+               gts.unTrack(value);
+        } catch (SQLException e){
+            throw new ServletException(e);
+        }
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Githuber> gt = gts.getAllGithubers();
+        List<Githuber> gt = null;
+        try {
+            gt = gts.getAllGithubers();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         request.setAttribute("githubers", gt);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/githubers.jsp");
         dispatcher.forward(request,response);

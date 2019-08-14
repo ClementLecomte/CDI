@@ -24,6 +24,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Avatar Url</th>
                     <th scope="col">Login </th>
+                    <th scope="col">Action </th>
 
                 </tr>
                 <c:forEach items="${githubers}" var="githuber">
@@ -32,7 +33,13 @@
                         <td>${githuber.email}</td>
                         <td><img src=${githuber.avatarUrl} style="width: 200px; height:200px;"></td>
                         <td>${githuber.login}</td>
+                        <td>
+                        <form action="githubers" method="post">
+                            <button type="submit" name="untrack" value=${githuber.login}>Untrack</button>
+                        </form>
+                        </td>
                     </tr>
+
                 </c:forEach>
 
             </table>

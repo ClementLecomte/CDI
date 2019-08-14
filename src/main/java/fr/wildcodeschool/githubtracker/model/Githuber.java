@@ -20,13 +20,46 @@ public class Githuber {
     String avatarUrl;
     @JsonProperty("id")
     int id;
+    @JsonProperty("location")
+    String location;
+    @JsonProperty("url")
+    String url;
+    @JsonProperty ("bio")
+    String bio;
 
+    public String getLocation() {
+        return location;
+    }
 
-    public Githuber(String name, String login, String email, String avatarUrl) {
+    public String getUrl() {
+        return url;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public Githuber(String name, String login, String email, String avatarUrl, int id, String location, String url, String bio) {
         this.name = name;
         this.login = login;
         this.email = email;
         this.avatarUrl = avatarUrl;
+        this.id = id;
+        this.location = location;
+        this.url = url;
+        this.bio = bio;
     }
 
     public Githuber( ) {
