@@ -2,20 +2,29 @@ package fr.wildcodeschool.githubtracker.dao;
 
 import fr.wildcodeschool.githubtracker.model.Githuber;
 
+import javax.annotation.Resource;
 import javax.enterprise.context.Dependent;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class JDBCGithuberDAO implements GithuberDao{
 
+    @Resource(lookup = "jdbc/test")
+    private DataSource ds;
 
-    private final String url = "jdbc:mysql://localhost:3306/githubtracker";
+    /*private final String url = "jdbc:mysql://localhost:3306/githubtracker";
     private final String user = "wordpress";
     private final String password = "M@xone";
-
+    */
 
     private Connection connection;
+
+
+
 
     static {
         try {
@@ -25,16 +34,16 @@ public class JDBCGithuberDAO implements GithuberDao{
         }
     }
 
-    public Connection getConnection() throws SQLException {
+   /* public Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(url, user, password);
         }
         return connection;
-    }
+    }*/
 
    @Override
     public void saveGithuber(Githuber githuber) throws SQLException {
-       Connection connection = getConnection();
+       Connection connection = ds.getConnection();
        try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `githuber`( `github_id`, `name`, `login`, `url`, `email`, `bio`, `location`, `avatar_url`)"
                + "VALUES (?,?,?,?,?,?,?,?)")) {
            preparedStatement.setInt(1, githuber.getId());
@@ -53,7 +62,7 @@ public class JDBCGithuberDAO implements GithuberDao{
     @Override
     public List<Githuber> getGithubers() throws SQLException {
         List<Githuber> githubers = new ArrayList<>();
-        Connection connection = getConnection();
+        Connection connection = ds.getConnection();
         try (Statement statement = connection.createStatement()) {
             ResultSet resultat = statement.executeQuery(" SELECT * FROM `githuber`");
             while (resultat.next()) {
@@ -73,7 +82,7 @@ public class JDBCGithuberDAO implements GithuberDao{
     }
 
     public void rmGithuber(Githuber githuber) throws SQLException {
-        Connection con = getConnection();
+        Connection con = ds.getConnection();
         try (PreparedStatement preparedStmt = con.prepareStatement("DELETE FROM `githuber` WHERE login=? ")) {
             preparedStmt.setString(1, githuber.getLogin());
             preparedStmt.executeUpdate();

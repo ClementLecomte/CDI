@@ -41,6 +41,6 @@ public class GithubersService {
     public void unTrack(String login) throws SQLException {
         Githuber githuber = getGithuber(login);
         jdbcGithuberDAO.rmGithuber(githuber);
-        }
 
+        }
 }
